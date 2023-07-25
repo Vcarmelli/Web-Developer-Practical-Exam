@@ -1,0 +1,110 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-header {
+  margin: 0 14em 0 14em;
+  background-color: rgb(238, 238, 238);
+}
+
+.header-title {
+  padding: 0.5em;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.main-nav {
+  background-color: rgb(234, 106, 91);
+}
+
+.nav ul {
+  margin: 0;
+}
+
+.nav li {
+  display: inline;
+  margin-right: 30px;
+}
+
+.nav a {
+  color: white;
+  display: inline-block;
+  padding: 0.5em;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.details {
+  padding-bottom: 1em;
+  margin: 0em 14em 0em 14em;
+}
+
+.div-title {
+  margin: 2em 14em 1em 14em;
+  font-weight: 900;
+}
+
+.web-title {
+  text-align: center;
+}
+
+.btn {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.8em 3em 0.8em 3em;
+  margin: 0em 14em 0em 17em;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(234, 106, 91);
+  border: none;
+  border-radius: 0.3em;
+  font-weight: bold;
+}
+
+.car-image {
+  display: flex;
+  justify-content: center;
+}
+
+.current-color {
+  height: 200px;
+  width: 280px;
+}
+
+.target-color {
+  height: 200px;
+  width: 280px;
+}
+
+.shape {
+  height: 40px;
+  width: 40px;
+  margin-top: 5em;
+}
+
+table {
+  padding: 20;
+  margin-left: 14em;
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid black;
+}
+
+.action {
+  color: rgb(234, 106, 91);
+  font-weight: 800;
+}/*# sourceMappingURL=style.css.map */

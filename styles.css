@@ -70,7 +70,6 @@ a:active {
 
 .div {
     display: flex;
-
 }
 
 .div-title {
@@ -96,6 +95,10 @@ a:active {
     font-weight: bold;
 }
 
+.btn:hover {
+    background-color: rgb(156, 68, 58);
+}
+
 .car-image {
     display: flex;
     justify-content: center;
@@ -119,14 +122,21 @@ a:active {
 
 
 table {
-    padding: 20;
     margin-left: 14em;
-    border: 1px solid black;
 }
+
+.table-header {
+    background-color: rgba(238, 238, 238);
+}
+
 
 th, td {
     padding: 12px;
-    border: 1px solid black;
+    border: 3px solid rgba(238, 238, 238);
+}
+
+tr {
+    border: 3px solid rgba(238, 238, 238);
 }
 
 .action {

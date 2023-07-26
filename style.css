@@ -45,9 +45,29 @@ html, body {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+a:active {
+  color: black;
+  border-bottom: 2px black solid;
+}
+
 .details {
-  padding-bottom: 1em;
-  margin: 0em 14em 0em 14em;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.form-title {
+  flex: 0 0 150px;
+  margin: 0.5em 0em 0.5em 14em;
+}
+
+.form-input {
+  width: 180px;
+  height: 28px;
+}
+
+.div {
+  display: flex;
 }
 
 .div-title {
@@ -63,13 +83,18 @@ html, body {
   text-align: center;
   vertical-align: middle;
   padding: 0.8em 3em 0.8em 3em;
-  margin: 0em 14em 0em 17em;
+  margin: 2em 14em 0em 17em;
+  width: 180px;
   cursor: pointer;
   color: white;
   background-color: rgb(234, 106, 91);
   border: none;
   border-radius: 0.3em;
   font-weight: bold;
+}
+
+.btn:hover {
+  background-color: rgb(156, 68, 58);
 }
 
 .car-image {

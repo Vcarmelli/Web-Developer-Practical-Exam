@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <script defer src="script.js"></script>
     <title>Paint Jobs</title>
 </head>
@@ -24,31 +24,35 @@
     <h2 class="web-title">Paint Jobs</h2>
     <div>
         <h4 class="div-title">Paint Jobs in Progress</h4>
-        <table class="table">
-            <tr>
-                <th>Plate No.</th>
-                <th>Current Color</th>
-                <th>Target Color</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                <td>XSA 723</td>
-                <td>Blue</td>
-                <td>Green</td>
-                <td class="action">Mark as Completed</td>
-            </tr>
-            <tr>
-                <td>ABS 092</td>
-                <td>Red</td>
-                <td>Blue</td>
-                <td class="action">Mark as Completed</td>
-            </tr>
-            <tr>
-                <td>JSL 110</td>
-                <td>Red</td>
-                <td>Green</td>
-                <td class="action">Mark as Completed</td>
-            </tr>
+        <table id="jobs-table" class="table">
+            <thead class="table-header">
+                <tr>
+                    <th>Plate No.</th>
+                    <th>Current Color</th>
+                    <th>Target Color</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>XSA 723</td>
+                    <td>Blue</td>
+                    <td>Green</td>
+                    <td class="action">Mark as Completed</td>
+                </tr>
+                <tr>
+                    <td>ABS 092</td>
+                    <td>Red</td>
+                    <td>Blue</td>
+                    <td class="action">Mark as Completed</td>
+                </tr>
+                <tr>
+                    <td>JSL 110</td>
+                    <td>Red</td>
+                    <td>Green</td>
+                    <td class="action">Mark as Completed</td>
+                </tr> -->
+            </tbody>           
 		</table>
     </div>
 

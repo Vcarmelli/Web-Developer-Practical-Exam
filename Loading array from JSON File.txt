@@ -1,0 +1,118 @@
+function loadPaintJobs() {
+    const request = new XMLHttpRequest();
+    request.open("get", "paintjobs.json");
+    request.onload = () => {
+        try {
+            const json = JSON.parse(request.responseText)
+            populateJobsTable(json);
+        } catch (e){
+            console.warn(e);
+        }
+    }
+    request.send();
+}
+
+function populateJobsTable(json) {
+    // console.log(json);
+    while(jobsTable.firstChild){
+        jobsTable.removeChild(jobsTable.firstChild);
+    }
+
+    json.forEach((row) => {
+        const tr = document.createElement("tr");
+
+        row.forEach((cell) => {
+            const td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+        });
+        jobsTable.appendChild(tr);
+    });
+}
+
+
+// [
+//     ["NCT 127", "Blue", "Green", "Mark as Completed"],
+//     ["NCT Dream", "Red", "Green", "Mark as Completed"],
+//     ["NCT U", "Blue", "Red", "Mark as Completed"],
+//     ["WayV 119", "Green", "Blue", "Mark as Completed"]
+// ]
+
+
+[
+    {
+        "PlateNo": "XSA 723",
+        "CurrentColor": "Blue", 
+        "TargetColor": "Green",
+        "Action": "Mark as Completed"
+    },
+    {
+        "PlateNo": "ABS 092",
+        "CurrentColor": "Red", 
+        "TargetColor": "Blue",
+        "Action": "Mark as Completed"
+    },
+    {
+        "PlateNo": "JSL 110",
+        "CurrentColor": "Red", 
+        "TargetColor": "Green",
+        "Action": "Mark as Completed"
+    },
+    {
+        "PlateNo": "XHJ 133",
+        "CurrentColor": "Green", 
+        "TargetColor": "Blue",
+        "Action": "Mark as Completed"
+    },
+    {
+        "PlateNo": "HSU 005",
+        "CurrentColor": "Blue", 
+        "TargetColor": "Ren",
+        "Action": "Mark as Completed"
+    }
+]
+
+fetch("paintjobs.json")
+.then(function(response){
+    return response.json();
+})
+.then(function(jobs){
+    const jobsTable = document.querySelector("#jobs-table > tbody");
+    let data = "";
+    for(let job of jobs){
+        data += `
+            <tr>
+                <td>${job.PlateNo}</td>
+                <td>${job.CurrentColor}</td>
+                <td>${job.TargetColor}</td>
+                <td>${job.Action}</td>
+            </tr>
+        `;
+    }
+    jobsTable.innerHTML = data;
+})
+
+
+
+function loadPaintJobs() {
+    const request = new XMLHttpRequest();
+    request.open("get", "paintjobs.json", true);
+    request.send();
+    request.onload = function () {
+        if (request.readyState == 4 && request.status == 200){
+            const json = JSON.parse(request.responseText);
+            let data = "";
+            for(let item of json){
+                data += `
+                    <tr>
+                        <td>${item[0]}</td>
+                        <td>${item[1]}</td>
+                        <td>${item[2]}</td>
+                        <td>${item[3]}</td>
+                    </tr>
+                `;
+            }
+            jobsTable.innerHTML = data;
+        }
+    request.send();
+}

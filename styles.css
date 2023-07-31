@@ -5,12 +5,12 @@
 }
 
 html, body{
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 .main-header {
-    margin: 0 14em 0 14em;
+    margin: 0em 14em 0em 14em;
     background-color: rgba(238, 238, 238);
 }
 
@@ -121,14 +121,13 @@ a:active {
 }
 
 
-table {
-    margin-left: 14em;
+.table {
+    margin: 1em 1em 3em 14em;
 }
 
 .table-header {
     background-color: rgba(238, 238, 238);
 }
-
 
 th, td {
     padding: 12px;
@@ -139,10 +138,59 @@ tr {
     border: 3px solid rgba(238, 238, 238);
 }
 
+.inprogress-performance {
+    display: flex;
+    align-items: center;
+}
+
+.shop-performance {
+    margin: 20px;
+    align-self: flex-start;
+    background-color: rgba(238, 238, 238);
+    width: 250px;
+}
+
+.perf-title {
+    display: flex;
+    font-weight: bold;
+    flex-direction: column;
+    align-self: left;
+    padding: .5em 1em;
+    background-color: rgb(234, 106, 91);
+    color: white;
+}
+
+.performance-deets {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.perf-details {
+    padding: 2px;
+}
+
+.perf-details-bd {
+    padding-left: 20px;
+}
+
+.perf-num {
+    margin-left: auto;
+}
+
+.bd-blue,
+.bd-red,
+.bd-green {
+    display: flex;
+    justify-content: space-between;
+}
+
 .action {
     color:rgb(234, 106, 91);
     font-weight: 800;
+    text-decoration: none;
 }
+
 
 
 

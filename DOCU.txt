@@ -1,0 +1,21 @@
+072823 14:09
+
+last time na add na from json file kaso naka array type yugn data hindi object
+so binago ko nitry ko gawing object, ayaw
+nagfocus kasi me sa pagpopulate nung table from json file
+
+then kagabi tinry ko muna magfocus sa pagkuha ng data from first page using fetch api, nakukuha naman, narereturn naman as object pero nung tinatry ko na ipopulate sa table nag eeror ibang type daw
+maybe may mali sa pag aadd ko ng data sa table 
+
+ngayon tatry ko naman paggamit ng php para cumonnect sa server, embedded sa html muna yung php, let's start simple kumbaga kasi nakakasadt yung mvc framework HAHAHA
+
+18:49
+naconnect ko naman sa xampp server naadd na rin sa database pagnagsusubmit ng form pero di pa rin nadidisplay sa table :>
+
+073123 15:48
+I DID ITTTTTTTTTTTTTTTT nakukuha na yung data then na nadisplay na sa tableeee
+ginawa kong mysqli (procedural) sa pagconnect sa database
+TO DO
+- 5 lang sa queue then yung action button na mark as completed
+
+

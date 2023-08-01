@@ -15,7 +15,12 @@ naconnect ko naman sa xampp server naadd na rin sa database pagnagsusubmit ng fo
 073123 15:48
 I DID ITTTTTTTTTTTTTTTT nakukuha na yung data then na nadisplay na sa tableeee
 ginawa kong mysqli (procedural) sa pagconnect sa database
-TO DO
-- 5 lang sa queue then yung action button na mark as completed
+TO DO:
+- 5 lang sa queue; polling delay na 5 seconds thingyy ?
+- action button na mark as completed (on going function)
+- submit button dapat magdidirect na agad sa next page
+- form validation
+END: 6:16PM 
+
 
 

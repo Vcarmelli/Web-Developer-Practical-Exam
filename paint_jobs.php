@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script defer src="script.js"></script>
     <title>Paint Jobs</title>
 </head>
@@ -43,11 +44,11 @@
                         $sql = "SELECT * FROM paint_queue LIMIT 5";
                         $rows = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_array($rows)) { ?>
-                            <tr>
+                            <tr class="job-row">
                                 <td><?php echo $row["plateNum"]; ?></td>
                                 <td><?php echo $row["currColor"]; ?></td>
                                 <td><?php echo $row["targColor"]; ?></td>
-                                <td><a href="#" class="action" onclick="submitData(<?php echo $row['plateNum']; ?>">Mark as Completed</a></td>
+                                <td><a href='#' class="action" onclick="submitData('<?php echo $row['plateNum']; ?>');">Mark as Completed</a></td>
                             </tr>           
                         <?php }
                     ?>
@@ -89,21 +90,21 @@
             <div class="performance-deets">
                 <div class="perf-details"> 
                     <span class="perf-details">Total Cars Painted:</span>
-                    <span class="perf-details perf-num">48</span>
+                    <span class="perf-details perf-num"> </span>
                 </div>
                 <div class="perf-details">
                     <span class="perf-details">Breakdown:</span>
                     <div class="bd-blue"> 
                         <span class="perf-details perf-details-bd">Blue</span>
-                        <span class="perf-details">24</span>
+                        <span class="perf-details perf-blue"> </span>
                     </div>
                     <div class="bd-red"> 
                         <span class="perf-details perf-details-bd">Red</span>
-                        <span class="perf-details">21</span>
+                        <span class="perf-details perf-red"> </span>
                     </div>
                     <div class="bd-green"> 
                         <span class="perf-details perf-details-bd">Green</span>
-                        <span class="perf-details">3</span>
+                        <span class="perf-details perf-green"> </span>
                     </div>
                 </div>
             </div>
@@ -124,7 +125,7 @@
                     $sql = "SELECT * FROM paint_queue";
                     $rows = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($rows)) { ?>
-                        <tr>
+                        <tr class="job-row2">
                             <td><?php echo $row["plateNum"]; ?></td>
                             <td><?php echo $row["currColor"]; ?></td>
                             <td><?php echo $row["targColor"]; ?></td>

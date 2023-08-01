@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
-    <script defer src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
     <title>New Paint Jobs</title>
 </head>
 <body>
@@ -31,9 +32,9 @@
         <form class="form" method="post" action="includes/formhandler.php"> 
             <div>
                 <div class="details">
-                    <span class="form-title" name="input-plate">Plate No.</span>
-                    <!-- <span class="error">* <?php echo $numErr;?></span> <br><br> -->
+                    <span class="form-title">Plate No.</span>
                     <input id="plateNum" class="form-input" name="plateNum" type="text"></input>
+                    <!-- <span class="error">* <?php global $numErr; echo $numErr;?></span> <br><br> -->
                 </div>
                 <div class="details">
                     <span class="form-title">Current Color</span>

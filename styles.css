@@ -191,6 +191,11 @@ tr {
     text-decoration: none;
 }
 
+.error {
+    color:rgb(234, 106, 91);
+    font-weight: 800;
+}
+
 
 
 

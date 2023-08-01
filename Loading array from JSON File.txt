@@ -116,3 +116,27 @@ function loadPaintJobs() {
         }
     request.send();
 }
+
+
+
+/ jQuery syntax
+    $(document).ready(function() {
+        var data = {
+            action: action,
+            plateNum: $('#plateNum').val(),
+            currentColor: $('#current-select').val(),
+            targetColor: $('#target-select').val()
+        };
+
+        $.ajax({
+            url: 'functions.php',
+            type: 'post',
+            data: data,
+            success:function(response){
+                alert(response);
+                if(response == "Removed from the queue"){
+                    $("#"+action).css("display", "none");
+                }
+            }
+
+        });

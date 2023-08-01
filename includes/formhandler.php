@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_bind_param($stmt, "sss", $plate, $curr, $targ);  // sss - means 3 strings
         mysqli_stmt_execute($stmt);
 
-        header("Location: ../index.php"); 
+        header("Location: ../paint_jobs.php"); 
         // can use exit(); but if with connection use die()
         die();
     } catch (Exception $e) {

@@ -6,6 +6,82 @@ const targetSelectedColor = document.getElementById('target-select');
 const currentSelectedImage = document.getElementById('current-car');
 const targetSelectedImage = document.getElementById('target-car');
 
+
+function submitData(plateNum) {
+    $(document).ready(function() {
+        var data = {
+            action: "delete",
+            plateNum: plateNum
+        };
+
+        $.ajax({
+            url: '/includes/function.php',
+            type: 'POST',
+            data: data,
+            success: function(response) {
+                alert(response);
+                if (response === "Job removed from the queue.") {
+                    //document.getElementById(plateNum).style.display = "none";
+                    $(".job-row").each(function() {
+                        if ($(this).find("td:first").text() === plateNum) {
+                            $(this).hide();
+                            return false; // Exit the loop
+                        }
+                    });
+
+                    $(".job-row2").each(function() {
+                        if ($(this).find("td:first").text() === plateNum) {
+                            $(this).hide();
+                            return false; // Exit the loop
+                        }
+                    });
+                    updateTotal();
+                }
+                else {
+                    alert("Cannet be removed yet.");
+                }
+            }
+        });
+    })
+}
+
+function updateTotal() {
+    const total = document.querySelector('.perf-num');
+    const red = document.querySelector('.perf-red');
+    const blue = document.querySelector('.perf-blue');
+    const green = document.querySelector('.perf-green');
+    let r = g = b = t = 0;
+
+    $(document).ready(function() {
+        $.ajax({
+            url: '/includes/function.php',
+            type: 'POST',
+            data: { action: "update" },
+            dataType: 'json',
+            success: function(response) {
+                console.log(response); // yung json with count and target color
+                for (let i = 0; i < response.length; i++) {
+                    const count = response[i].count;
+                    const targColor = response[i].targColor;
+                    if (targColor === "Red") {
+                        r = count;
+                    } else if (targColor === "Green") {
+                        g = count;
+                    } else if (targColor === "Blue"){
+                        b = count;
+                    }
+                    console.log("Count: " + count + ", targColor: " + targColor);
+                    t = r+g+b;
+                    total.innerHTML = t;
+                    red.innerHTML = r;
+                    green.innerHTML = g;
+                    blue.innerHTML = b;
+                }
+            }
+        });
+    })
+}
+
 // const form = document.querySelector('.form');
 // const jobsTable = document.querySelector('.table-body');
 
@@ -52,15 +128,15 @@ currentSelectedColor.addEventListener('change', function() {
     
     let imageUrl;
     switch(selectedValue){
-        case 'Red':
+        case 'red':
             imageUrl = '/images/Red.png';
             console.log("Red Car");
             break;
-        case 'Green':
+        case 'green':
             imageUrl = '/images/Green.png';
             console.log("Green Car");
             break;
-        case 'Blue':
+        case 'blue':
             imageUrl = '/images/Blue.png';
             console.log("Blue Car");
             break;
@@ -78,15 +154,15 @@ targetSelectedColor.addEventListener('change', function() {
     
     let imageUrl;
     switch(selectedValue){
-        case 'Red':
+        case 'red':
             imageUrl = '/images/Red.png';
             console.log("Red Car");
             break;
-        case 'Green':
+        case 'green':
             imageUrl = '/images/Green.png';
             console.log("Green Car");
             break;
-        case 'Blue':
+        case 'blue':
             imageUrl = '/images/Blue.png';
             console.log("Blue Car");
             break;
@@ -98,29 +174,3 @@ targetSelectedColor.addEventListener('change', function() {
     targetSelectedImage.src = imageUrl;
 });
 
-
-function submitData() {
-    // jQuery syntax
-    $(document).ready(function() {
-        var data = {
-            action: action,
-            plateNum: $('#plateNum').val(),
-            currentColor: $('#current-select').val(),
-            targetColor: $('#target-select').val()
-        };
-
-        $.ajax({
-            url: 'functions.php',
-            type: 'post',
-            data: data,
-            success:function(response){
-                alert(response);
-                if(response == "Removed from the queue"){
-                    $("#"+action).css("display", "none");
-                }
-            }
-
-        });
-        
-    });
-}

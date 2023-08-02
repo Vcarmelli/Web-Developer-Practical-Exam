@@ -48,7 +48,9 @@
                                 <td><?php echo $row["plateNum"]; ?></td>
                                 <td><?php echo $row["currColor"]; ?></td>
                                 <td><?php echo $row["targColor"]; ?></td>
-                                <td><a href='#' class="action" onclick="submitData('<?php echo $row['plateNum']; ?>');">Mark as Completed</a></td>
+                                <td><a href='#' class="action" 
+                                    onclick="submitData('<?php echo $row['plateNum']; ?>', '<?php echo $row['currColor']; ?>', '<?php echo $row['targColor']; ?>');">
+                                    Mark as Completed</a></td>
                             </tr>           
                         <?php }
                     ?>
@@ -88,23 +90,25 @@
         <div class="shop-performance">
             <span class="perf-title">SHOP PERFORMANCE</span>
             <div class="performance-deets">
-                <div class="perf-details"> 
-                    <span class="perf-details">Total Cars Painted:</span>
-                    <span class="perf-details perf-num"> </span>
+                <div class="perf-details">
+                    <div class="bd-total">
+                        <span class="perf-details-total">Total Cars Painted:</span>
+                        <span class="perf-num"> </span>
+                    </div>                       
                 </div>
                 <div class="perf-details">
                     <span class="perf-details">Breakdown:</span>
                     <div class="bd-blue"> 
-                        <span class="perf-details perf-details-bd">Blue</span>
-                        <span class="perf-details perf-blue"> </span>
+                        <span class="perf-details-bd">Blue</span>
+                        <span class="perf-blue"> </span>
                     </div>
                     <div class="bd-red"> 
-                        <span class="perf-details perf-details-bd">Red</span>
-                        <span class="perf-details perf-red"> </span>
+                        <span class="perf-details-bd">Red</span>
+                        <span class="perf-red"> </span>
                     </div>
                     <div class="bd-green"> 
-                        <span class="perf-details perf-details-bd">Green</span>
-                        <span class="perf-details perf-green"> </span>
+                        <span class="perf-details-bd">Green</span>
+                        <span class="perf-green"> </span>
                     </div>
                 </div>
             </div>

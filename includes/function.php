@@ -3,27 +3,6 @@
 require 'db.php';
 
 
-/*$numErr = $input = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["plateNum"])) {
-      $numErr = "Plate Number is required";
-    } else {
-      $input = test_input($_POST["input-plate"]);
-      // check if name only contains letters and whitespace
-      if (!preg_match("/[a-zA-Z-' 0-9]/i",$input)) {
-        $numErr = "Invalid input";
-      }
-    }
-}
-
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}*/
-
 if(isset($_POST["action"])) {
     if ($_POST["action"] == "delete") {
         delete();
@@ -35,24 +14,41 @@ if(isset($_POST["action"])) {
 
 function delete() {
     global $conn;
-    $data = $_POST["plateNum"];
-    $sql = "DELETE FROM paint_queue WHERE plateNum = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $data);
+    // get the data from POST 
+    $plate = $_POST[ "plateNum"]; 
+    $curr = $_POST["currColor"];
+    $targ = $_POST["targColor"];
 
-    if (mysqli_stmt_execute($stmt)) {
-        echo "Job removed from the queue.";
-    } else {
-        echo "Failed to remove paint job.";
+    try {
+        // adds the data of completed job before removing to paint_queue
+        $insert = "INSERT INTO completed_jobs (plateNum, currColor, targColor) VALUES (?, ?, ?);";
+        $stmt1 = mysqli_prepare($conn, $insert);   // prepare the query for db
+        mysqli_stmt_bind_param($stmt1, "sss", $plate, $curr, $targ);  // adds the variable into the sql query
+
+        if (mysqli_stmt_execute($stmt1)) {
+            // will remove data if successfully added to completed table
+            $sql = "DELETE FROM paint_queue WHERE plateNum = ?"; 
+            $stmt2 = mysqli_prepare($conn, $sql);   // preparing query to remove the data from queue table
+            mysqli_stmt_bind_param($stmt2, "s", $plate);
+            mysqli_stmt_execute($stmt2);
+
+            echo "Job removed from the queue.";
+        }
+        else {
+            echo "Failed to remove paint job.";
+        }
+
+        die();
+    } catch (Exception $e) {
+        die("Query Failed: " . $e->getMessage());
     }
-    mysqli_stmt_close($stmt);
 } 
 
 //080123
 function update() {
     global $conn;
     $data = array(); 
-    $sql = "SELECT COUNT(targColor) AS count, targColor FROM paint_queue GROUP BY targColor;";
+    $sql = "SELECT COUNT(targColor) AS count, targColor FROM completed_jobs GROUP BY targColor;";
     $result = mysqli_query($conn, $sql);
     // receive and store the data from the query in an array 
     while ($row = mysqli_fetch_assoc($result)) {

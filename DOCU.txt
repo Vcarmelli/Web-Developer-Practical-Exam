@@ -22,5 +22,7 @@ TO DO:
 - form validation
 END: 6:16PM 
 
+080123 16:07
+nagdidisplay na ng tama yung sa shop performance yayy. action button, submit button done. 5 lang sa queue yes pero ano ba kasi yung polling delay na 5 seconds? form validation and align yung total car painted na lungss yaazz! 
 
 

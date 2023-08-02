@@ -6,12 +6,19 @@ const targetSelectedColor = document.getElementById('target-select');
 const currentSelectedImage = document.getElementById('current-car');
 const targetSelectedImage = document.getElementById('target-car');
 
+// to load data in the shop performance part
+document.addEventListener("DOMContentLoaded", function() {
+    updateTotal();
+});
 
-function submitData(plateNum) {
+function submitData(plateNum, currColor, targColor) {
     $(document).ready(function() {
         var data = {
             action: "delete",
-            plateNum: plateNum
+            plateNum: plateNum,
+            currColor:  currColor,
+            targColor: targColor
+
         };
 
         $.ajax({
@@ -19,7 +26,7 @@ function submitData(plateNum) {
             type: 'POST',
             data: data,
             success: function(response) {
-                alert(response);
+                //alert(response);
                 if (response === "Job removed from the queue.") {
                     //document.getElementById(plateNum).style.display = "none";
                     $(".job-row").each(function() {
@@ -38,7 +45,7 @@ function submitData(plateNum) {
                     updateTotal();
                 }
                 else {
-                    alert("Cannet be removed yet.");
+                    alert("Cannot be removed yet.");
                 }
             }
         });
@@ -61,7 +68,7 @@ function updateTotal() {
             success: function(response) {
                 console.log(response); // yung json with count and target color
                 for (let i = 0; i < response.length; i++) {
-                    const count = response[i].count;
+                    const count = parseInt(response[i].count);
                     const targColor = response[i].targColor;
                     if (targColor === "Red") {
                         r = count;
@@ -72,10 +79,12 @@ function updateTotal() {
                     }
                     console.log("Count: " + count + ", targColor: " + targColor);
                     t = r+g+b;
-                    total.innerHTML = t;
-                    red.innerHTML = r;
-                    green.innerHTML = g;
-                    blue.innerHTML = b;
+
+                    // Update the HTML elements only if they exist to prevent null error
+                    if (total) total.innerHTML = t;
+                    if (red) red.innerHTML = r;
+                    if (green) green.innerHTML = g;
+                    if (blue) blue.innerHTML = b;
                 }
             }
         });
@@ -120,7 +129,6 @@ function updateTotal() {
 //     .catch(error => console.log(error));
 
 // });
-
 
 // changing car color for current color option
 currentSelectedColor.addEventListener('change', function() {

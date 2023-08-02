@@ -21,7 +21,7 @@
             </nav>
         </div>
     </header>
-    <div>
+    <div class="main-div">
         <h2 class="web-title">New Paint Job</h2>
         <div class="car-image">
             <img id="current-car" class="current-color" src="/images/Default.png">
@@ -33,8 +33,8 @@
             <div>
                 <div class="details">
                     <span class="form-title">Plate No.</span>
-                    <input id="plateNum" class="form-input" name="plateNum" type="text"></input>
-                    <!-- <span class="error">* <?php global $numErr; echo $numErr;?></span> <br><br> -->
+                    <input id="plateNum" class="form-input" name="plateNum" type="text" autocomplete="off" autofocus placeholder="XXX 0000"></input>
+                    <span class="error">* <?php echo isset($numErr) ? $numErr : ''; ?></span> <br><br>
                 </div>
                 <div class="details">
                     <span class="form-title">Current Color</span>
